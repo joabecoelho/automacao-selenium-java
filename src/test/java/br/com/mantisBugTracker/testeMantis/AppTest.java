@@ -24,7 +24,7 @@ public class AppTest {
     	System.setProperty("webdriver.edge.driver", "C:\\PROJETOS ECLIPSE\\taskit\\drivers\\msedgedriver.exe");
     	driver = new EdgeDriver();
     	driver.manage().window().maximize();
-	    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 	
 	@AfterEach
