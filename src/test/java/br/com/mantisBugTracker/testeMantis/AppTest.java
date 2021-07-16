@@ -23,7 +23,7 @@ public class AppTest {
 	public void iniciar() {
 		url = "https://www.mantisbt.org/bugs/login_page.php";
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\joabe\\Documents\\Projetos Eclipse\\automacao-teste\\drivers\\chromedriver.exe");
+				"C:\\Users\\joabe\\Documents\\Projetos Eclipse\\Testes\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
