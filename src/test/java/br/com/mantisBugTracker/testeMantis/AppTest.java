@@ -33,14 +33,15 @@ public class AppTest {
 	public void iniciar() {
 		url = "https://www.mantisbt.org/bugs/login_page.php";
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\joabe\\Documents\\Projetos Eclipse\\automacao-teste\\drivers\\chromedriver.exe");
+				"C:\\PROJETOS ECLIPSE\\testeMantis\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
 	}
 
 	@AfterEach
-	public void finalizar() {
+	public void finalizar() throws InterruptedException {
+		Thread.sleep(2000);
 		driver.quit();
 	}
 
@@ -50,7 +51,7 @@ public class AppTest {
 	}
 
 	@Test
-	public void testeLoginSucesso() throws InterruptedException {
+	public void testeLoginSucesso() {
 
 		driver.get(url);
 
@@ -58,7 +59,6 @@ public class AppTest {
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("123");
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]")).click();
-		Thread.sleep(2000);
 
 	}
 
@@ -71,7 +71,6 @@ public class AppTest {
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("321");
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]")).click();
-		Thread.sleep(2000);
 
 		String textFalha = "Sua conta pode estar desativada ou bloqueada ou o "
 				+ "nome de usuário e a senha que você digitou não estão corretos.";
@@ -88,7 +87,6 @@ public class AppTest {
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("123");
 		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]")).click();
-		Thread.sleep(2000);
 		
 		driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/ul/li[1]/div/a")).click();
 		driver.findElement(By.id("category_id")).click();
@@ -112,7 +110,6 @@ public class AppTest {
 			driver.findElement(By.id("additional_info")).sendKeys("testetestesteste");
 			driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[2]/div/div/form/div/div[2]/div[1]/div/table/tbody/tr[12]/td/label[2]/span")).click();
 			driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[2]/div/div/form/div/div[2]/div[2]/input")).click();
-			Thread.sleep(2000);
 		} else {
 			
 		driver.findElement(By.id("profile_closed_link")).click();	
@@ -128,8 +125,20 @@ public class AppTest {
 		driver.findElement(By.id("additional_info")).sendKeys("testetestesteste");
 		driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[2]/div/div/form/div/div[2]/div[1]/div/table/tbody/tr[12]/td/label[2]/span")).click();
 		driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[2]/div/div/form/div/div[2]/div[2]/input")).click();
-		Thread.sleep(2000);
 		}
+	}
+	
+	@Test
+	public void testeAcessarMinhaConta() throws InterruptedException {
+		driver.get(url);
+		
+		driver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys("joabecoelho");
+		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]")).click();
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("123");
+		driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]")).click();
+		
+		driver.findElement(By.xpath("//*[@id=\"navbar-container\"]/div[2]/ul/li[3]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"navbar-container\"]/div[2]/ul/li[3]/ul/li[1]/a")).click();
 	}
 
 }
