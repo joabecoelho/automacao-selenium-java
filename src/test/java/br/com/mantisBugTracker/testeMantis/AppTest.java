@@ -28,7 +28,8 @@ public class AppTest {
 		}
 		return true;
 	}
-
+	
+	//Inicia antes de cada teste
 	@BeforeEach
 	public void iniciar() {
 		url = "https://www.mantisbt.org/bugs/login_page.php";
@@ -39,17 +40,20 @@ public class AppTest {
 		driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
 	}
 
+	//Incia depois de cada teste
 	@AfterEach
 	public void finalizar() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.quit();
 	}
 
+	//Inicia depois de TODOS os testes
 	@AfterAll
 	public static void aposFinalizarTodos() {
 		JOptionPane.showMessageDialog(null, "Todos os teste(s) finalizado(s).");
 	}
 
+	//Teste que verifica se a função de login no sistema é realizada com sucesso
 	@Test
 	public void testeLoginSucesso() {
 
@@ -62,6 +66,7 @@ public class AppTest {
 
 	}
 
+	//Teste que verifica se a função de erro quando um login é inválido está funcionando
 	@Test
 	public void testeLoginFalho() throws InterruptedException {
 
@@ -79,6 +84,7 @@ public class AppTest {
 				driver.findElement(By.xpath("//*[@id=\"main-cont" + "ainer\"]/div/div/div/div/div[4]/p")).getText());
 	}
 	
+	//Teste que verifica se a função de criar uma tarefa com sucesso
 	@Test
 	public void testeCriarTarefa() throws InterruptedException {
 		driver.get(url);
@@ -128,6 +134,7 @@ public class AppTest {
 		}
 	}
 	
+	//Teste que verifica o acesso a tela "Minha Conta" do software
 	@Test
 	public void testeAcessarMinhaConta() throws InterruptedException {
 		driver.get(url);
